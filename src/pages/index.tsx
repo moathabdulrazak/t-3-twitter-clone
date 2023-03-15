@@ -4,9 +4,10 @@ import Link from "next/link";
 import { signIn, signOut, useSession } from "next-auth/react";
 
 import { api } from "~/utils/api";
+import { json } from "stream/consumers";
 
 const Home: NextPage = () => {
-
+const {data: session} = useSession()
   return (
     <>
       <Head>
@@ -15,6 +16,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 <button onClick={() => signIn()} >LogIn</button>
+
+{JSON.stringify(session)}
     </>
   );
 };
